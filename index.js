@@ -1,9 +1,11 @@
 "use strict";
 
 const elements = {
-  rock: 1,
-  paper: 2,
+  rock: 0,
+  lizard: 1,
+  spock: 2,
   scissors: 3,
+  paper: 4,
 };
 
 function getRandomElement() {
@@ -37,15 +39,13 @@ function getWinner(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return "ties";
   }
-  let countElements = elements.length;
+  let countElements = Object.keys(elements).length;
   let choiceDifference = playerSelection - computerSelection;
-  // Positive Remainder:
-  let choiceDifferenceModulo =
-    choiceDifference % elements.length < 0
-      ? choiceDifference
-      : choiceDifference * -1;
-  if (choiceDifferenceModulo % countElements === 0) {
+  let positiveModulo = (choiceDifference + countElements) % countElements;
+  if (positiveModulo % 2 === 0) {
+    return playerSelection + " < player wins " + computerSelection;
   } else {
+    return playerSelection + " computer wins > " + computerSelection;
   }
 }
 
@@ -62,4 +62,10 @@ function game() {
   }
 }
 
-game();
+for (let i = 0; i < 5; i++) {
+  console.group(i);
+  for (let j = 0; j < 5; j++) {
+    console.log(getWinner(i, j));
+  }
+  console.groupEnd();
+}

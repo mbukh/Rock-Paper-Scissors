@@ -7,3 +7,8 @@
 body {
     background-color: #444;
 }
+
+body>img {
+    width: 100%;
+    
+}
