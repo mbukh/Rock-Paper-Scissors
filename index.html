@@ -10,26 +10,125 @@
 </head>
 
 <body>
-    <img src="game-rules.png" alt="">
+    <!-- <img src="game-rules.png" alt=""> -->
+
+    <aside id="game-info">
+        <div>Games played:<span id="played-games">0</span></div>
+        <div>Luck rate:<span id="luck-stats">-</span></div>
+        <button id="reset">reset game</button>
+    </aside>
+
+    <aside id="help">
+        <span>?</span>
+    </aside>
+
+    <div id="wrapper">
+        <div id="rulesView">
+            <aside id="close">
+                <span>X</span>
+            </aside>
+            <section class="text-box">
+                <h3>About the basic game</h3>
+                <p>Rock, paper, scissors is a simple hand game that is played around the world. It is commonly used as a
+                    way
+                    of coming to decisions. The rules require that competing players use one hand to form one of three
+                    shapes at an agreed-upon time. The person that plays the strongest “object” is the winner of the
+                    game.
+                </p>
+            </section>
+            <section class="text-box">
+                <h3>Lizard and Spock variation</h3>
+                <p>In this variation the rules are very similar to the original game, but with a few more options to
+                    choose
+                    from.</p>
+            </section>
+
+            <section class="text-box">
+                <div class="title-icon">
+                    <!-- <img src="img/rock.svg" alt="rock gesture icon"> -->
+                    <h3>The rock</h3>
+                    <p>In the basic version, rock smashes scissors. In this variation rock smashes scissors and lizard.
+                    </p>
+                </div>
+            </section>
+
+            <section class="text-box">
+                <div class="title-icon">
+                    <!-- <img src="img/paper.svg" alt="paper gesture icon"> -->
+                    <h3>The paper</h3>
+                    <p>In the basic version, paper covers scissors. In this variation it also disproves Spock.</p>
+                </div>
+            </section>
+
+            <section class="text-box">
+                <div class="title-icon">
+                    <!-- <img src="img/scissors.svg" alt="scissors gesture icon"> -->
+                    <h3>The scissors</h3>
+                    <p>In the basic version, scissors cuts paper. Now it also decapitates lizard.</p>
+                </div>
+            </section>
+
+            <section class="text-box">
+                <div class="title-icon">
+                    <!-- <img src="img/lizard.svg" alt="lizard gesture icon"> -->
+                    <h3>The lizard</h3>
+                    <p>Lizard is a new gesture that belongs to the variation. Lizard eats paper and poisons Spock.</p>
+                </div>
+            </section>
+
+            <section class="text-box">
+                <div class="title-icon">
+                    <!-- <img src="img/spock.svg" alt="spock gesture icon"> -->
+                    <h3>The spock</h3>
+                    <p>Spock is the second gesture of the variation. Spock vaporizes rock and smashes scissors.</p>
+                </div>
+            </section>
+
+            <section class="text-box">
+                <h3>Good luck and enjoy!</h3>
+            </section>
+        </div>
+    </div>
+
     <div id="elements">
-        <div id="a">ROCK</div>
-        <div id="b">LIZARD</div>
-        <div id="c">SPOCK</div>
-        <div id="d">SCISSORS</div>
-        <div id="e">PAPER</div>
+        <div id="a">
+            <div>
+                <p>ROCK</p><img src="rock.png" />
+            </div>
+        </div>
+        <div id="b">
+            <div>
+                <p>LIZARD</p><img src="lizard.png" />
+            </div>
+        </div>
+        <div id="c">
+            <div>
+                <p>SPOCK</p><img src="spock.png" />
+            </div>
+        </div>
+        <div id="d">
+            <div>
+                <p>SCISSORS</p><img src="scissors.png" />
+            </div>
+        </div>
+        <div id="e">
+            <div>
+                <p>PAPER</p><img src="paper.png" />
+            </div>
+        </div>
     </div>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" id="arrows">
-        <marker id="arrowhead" markerWidth="14" markerHeight="5" refX="0" refY="2.5" orient="auto" opacity="0.8"
-            fill="#CCDD00">
+        <marker id="arrowhead" markerWidth="14" markerHeight="5" refX="0" refY="2.5" orient="auto" opacity="1"
+            fill="#5fc5ba">
             <polygon points="0 0, 5 2.5, 0 5" />
         </marker>
-        <path id="connector" fill="none" fill-opacity="0.4" opacity="0.4" stroke="#CCDD00" stroke-width="10"
-            marker-end="url(#arrowhead)" />
+        <path id="connector" class="connector" fill="none" marker-end="url(#arrowhead)" />
     </svg>
 
     <span id="center"></span>
     <script src="./index.js"></script>
+    <script src="./game.js"></script>
     <script src="./lines.js"></script>
 </body>
 

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
 :root {
   --radius: 100;
 }
@@ -6,21 +8,23 @@ html,
 body {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
-  background-color: #444;
+  background-color: #15133c;
 }
 
 body > img {
   width: 100%;
   position: absolute;
-  z-index: -1;
+  z-index: 0;
 }
 /* #center{
   display: block;
@@ -39,46 +43,212 @@ body > img {
 }
 
 #elements > div {
-  color: white;
+  color: #fff;
   position: fixed;
   width: calc(var(--radius) * 2 * 1px);
   height: calc(var(--radius) * 2 * 1px);
-  padding: 10px;
+  border: 20px solid #5fc5ba;
   border-radius: 50%;
+  background: repeating-linear-gradient(
+    0deg,
+    #0192c0,
+    #0192c0 10px,
+    #15133c 10px,
+    #15133c 20px
+  );
+  will-change: transform;
+  transition: all 600ms ease-in-out;
+  transform: scale(1);
+  box-shadow: 0 0px 4px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
+  cursor: pointer;
 }
-#elements > div :hover {
-  transition: width 0.5s ease-in-out;
-  transition: height 0.5s ease-in-out;
-  width: calc(var(--radius) * 2.2 * 1px);
-  height: calc(var(--radius) * 2.2 * 1px);
+#elements > div:hover {
+  transition: all 600ms ease-in-out;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.4);
+}
+#elements > div > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 10px solid #15133c;
+}
+#elements img {
+  position: relative;
+  transform: scale(calc(var(--radius) / 100));
+  margin-top: -20px;
+}
+#a {
+  top: 10%;
+  left: calc(50% - calc(var(--radius) * 1px));
+}
+#b {
+  top: 35%;
+  right: 12%;
+}
+#c {
+  bottom: 10%;
+  right: 25%;
+}
+#d {
+  bottom: 10%;
+  left: 25%;
+}
+#e {
+  top: 35%;
+  left: 12%;
 }
 svg#arrows {
   position: fixed;
   z-index: 1;
 }
-#a {
-  background-color: rgba(0, 0, 255, 0.715);
+svg#arrows path[id^="connector"] {
+  filter: drop-shadow(0px 0px 5px #000);
+}
+svg#arrows .connector {
+  stroke-width: 12;
+  stroke: #5fc5ba;
+  fill-opacity: 1;
+  opacity: 1;
+}
+#wrapper {
+  visibility: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #000c;
+  z-index: 9;
+}
+#rulesView {
+  visibility: hidden;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 50%;
+  z-index: 10;
+  padding: 10px 70px;
+  margin: 5% auto;
+  background-color: #fff;
+  box-shadow: 0 0px 15px 15px #5fc5ba;
+  overflow: scroll;
+  font-size: 1em;
+}
+
+#rulesView #close {
+  position: absolute;
   top: 5%;
-  left: calc(50% - calc(var(--radius) * 1px));
+  right: 5%;
+  font-size: 1.1em;
+  font-weight: 900;
+  line-height: 0.6em;
+  padding: 10px;
+  border: 1px solid #bebebe;
+  border-radius: 50%;
+  cursor: pointer;
 }
-#b {
-  background-color: rgba(255, 0, 0, 0.789);
-  top: 35%;
-  right: 12%;
+#rulesView section {
+  margin-bottom: 15px;
 }
-#c {
-  background-color: rgba(0, 128, 0, 0.787);
-  top: 70%;
-  right: 25%;
+
+#help {
+  position: fixed;
+  top: 5%;
+  left: 5%;
+  z-index: 5;
+  font-size: 1.1em;
+  font-weight: 900;
+  line-height: 0.6em;
+  padding: 10px;
+  border: 1px solid #bebebe;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
 }
-#d {
-  background-color: rgba(165, 5, 133, 0.718);
-  top: 70%;
-  left: 25%;
+
+#game-info {
+  position: fixed;
+  top: 5%;
+  right: 5%;
+  z-index: 4;
+  padding: 15px;
+  border: 1px solid #bebebe;
+  border-radius: 30%;
+  color: #fff;
 }
-#e {
-  background-color: rgba(152, 91, 0, 0.774);
-  top: 35%;
-  left: 12%;
+#game-info div {
+  margin-bottom: 10px;
+}
+#game-info span {
+  margin-left: 10px;
+}
+#game-info button {
+  display: block;
+  margin: 0 auto;
+  border-radius: 30%;
+  cursor: pointer;
+  padding: 7px 20px;
+  border: 1px solid #FFF;
+  background-color: #15133c;
+  color: #FFF;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+@media (max-width: 999px),
+  (max-height: 700px),
+  screen and (min-resolution: 192dpi) {
+  :root {
+    --radius: 60;
+  }
+  #elements > div {
+    border: 10px solid #5fc5ba;
+  }
+  #elements img {
+    position: absolute;
+    transform: scale(calc(var(--radius) / 120)) translate(-100%, -50%);
+    margin-top: -20px;
+  }
+  #a {
+    top: 5%;
+    left: calc(50% - calc(var(--radius) * 1px));
+  }
+  #b {
+    top: 35%;
+    right: 5%;
+  }
+  #c {
+    bottom: 5%;
+    right: 15%;
+  }
+  #d {
+    bottom: 5%;
+    left: 15%;
+  }
+  #e {
+    top: 35%;
+    left: 5%;
+  }
+  svg#arrows .connector {
+    stroke-width: 5;
+  }
+  #help {
+    top: 0;
+  }
+  #rulesView {
+    width: 90%;
+    height: 90%;
+    padding: 10px 50px;
+  }
+  #game-info {
+    top: 0;
+    right: 0;
+    padding: 10px 5px;
+    border-radius: 20%;
+    font-size: 0.9em;
+  }
+  #game-info button {
+    padding: 5px 15px;
+  }
 }
