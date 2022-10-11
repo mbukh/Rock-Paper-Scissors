@@ -7,9 +7,40 @@ const elements = {
   scissors: 3,
   paper: 4,
 };
+const maxNumberOfGames = 5;
+let currentGameNumber = 0;
+
+const elementsDiv = [
+  document.querySelector("#a"),
+  document.querySelector("#b"),
+  document.querySelector("#c"),
+  document.querySelector("#d"),
+  document.querySelector("#e"),
+];
+elementsDiv.forEach((el, idx) => el.addEventListener("click", el => game(idx)));
+  
+function game(playerElement) {
+    if (++currentGameNumber > 5) return 'Game Over.';
+    console.group("Round " + currentGameNumber);
+    // const playerSelection = getUserSelection();
+    const playerSelection = playerElement;
+    const computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection, computerSelection));
+    console.groupEnd();
+}
+
+function playRound(playerSelection, computerSelection) {
+  let winner = getWinner(playerSelection, computerSelection);
+  return winner;
+}
+
+function getComputerChoice() {
+  return getRandomElement();
+}
 
 function getRandomElement() {
-  return Math.floor(Math.random() * elements.length);
+  const keys = Object.keys(elements);
+  return elements[keys[(keys.length * Math.random()) << 0]];
 }
 
 function getUserSelection() {
@@ -31,10 +62,6 @@ function getUserSelection() {
   return userElement;
 }
 
-function getComputerChoice() {
-  return getRandomElement();
-}
-
 function getWinner(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return "ties";
@@ -49,23 +76,4 @@ function getWinner(playerSelection, computerSelection) {
   }
 }
 
-function playRound(playerSelection, computerSelection) {
-  let winner = getWinner(playerSelection, computerSelection);
-  return winner;
-}
 
-function game() {
-  for (let i = 0; i < 5; i++) {
-    // const playerSelection = getUserSelection();
-    const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
-  }
-}
-
-for (let i = 0; i < 5; i++) {
-  console.group(i);
-  for (let j = 0; j < 5; j++) {
-    console.log(getWinner(i, j));
-  }
-  console.groupEnd();
-}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,29 @@
     <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors</title>
 </head>
+
 <body>
-    <script src="./index.js"></script>
     <img src="game-rules.png" alt="">
+    <div id="elements">
+        <div id="a">ROCK</div>
+        <div id="b">LIZARD</div>
+        <div id="c">SPOCK</div>
+        <div id="d">SCISSORS</div>
+        <div id="e">PAPER</div>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" id="arrows">
+        <marker id="arrowhead" markerWidth="14" markerHeight="5" refX="0" refY="2.5" orient="auto" opacity="0.8"
+            fill="#CCDD00">
+            <polygon points="0 0, 5 2.5, 0 5" />
+        </marker>
+        <path id="connector" fill="none" fill-opacity="0.4" opacity="0.4" stroke="#CCDD00" stroke-width="10"
+            marker-end="url(#arrowhead)" />
+    </svg>
+
+    <span id="center"></span>
+    <script src="./index.js"></script>
+    <script src="./lines.js"></script>
 </body>
+
 </html>
