@@ -7,7 +7,7 @@ let divs = [
   document.querySelector("#d"),
   document.querySelector("#e"),
 ];
-var svg = document.getElementById("arrows");
+let svg = document.getElementById("arrows");
 let connectors = [];
 
 class Connector {
@@ -93,7 +93,7 @@ function drawConnector(divStart, divEnd) {
     document.querySelector("#connector").cloneNode(true)
   );
   let count = connectors.push(connector);
-  connector.connector.id = "connector" + count;
+  connector.connector.id = "connector" + divStart.id + divEnd.id;
 
   let dStr = getDString(divStart, divEnd);
   connector.connector.setAttribute("d", dStr);

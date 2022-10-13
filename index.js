@@ -8,7 +8,7 @@ help.addEventListener("click", () => {
   wrapper.style.visibility = "visible";
   rules.style.visibility = "visible";
 });
-help.addEventListener("mouseover", () => {
+help.addEventListener("click", () => {
   wrapper.style.visibility = "visible";
   rules.style.visibility = "visible";
 });
