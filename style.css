@@ -106,7 +106,7 @@ body > img {
 }
 #a {
   top: 10%;
-  left: calc(50% - calc(var(--radius) * 1px));
+  left: calc(50% - calc((var(--radius) - 1) * 1px));
 }
 #b {
   top: 35%;
@@ -239,7 +239,7 @@ svg#arrows .transparent {
   }
   #a {
     top: 5%;
-    left: calc(50% - calc(var(--radius) * 1px));
+    left: calc(50% - calc((var(--radius) - 1) * 1px));
   }
   #b {
     top: 35%;
