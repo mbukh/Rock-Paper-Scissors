@@ -119,6 +119,12 @@
     </div>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" id="arrows">
+        <defs>
+            <linearGradient id="arrow-gradient" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="100%" y2="0">
+                <stop offset="20%" stop-color="var(--color-start)"/>
+                <stop offset="80%" stop-color="var(--color-stop)"/>
+            </linearGradient>
+        </defs>
         <marker id="arrowhead" markerWidth="14" markerHeight="5" refX="0" refY="2.5" orient="auto" opacity="1"
             fill="#5fc5ba">
             <polygon points="0 0, 5 2.5, 0 5" />

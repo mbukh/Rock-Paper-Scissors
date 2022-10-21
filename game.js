@@ -66,16 +66,18 @@ function getRandomElement() {
 function getWinner(playerSelection, computerSelection) {
   let winner;
 
-  fadeLines(elementsDiv[playerSelection], elementsDiv[computerSelection]);
-
   if (playerSelection === computerSelection) {
     elementsDiv[playerSelection].classList.add("ties", "selected");
     setTimeout(() => {
       elementsDiv[playerSelection].classList.remove("ties", "selected");
     }, 2000);
     winner = `ties: ${playerSelection} == ${computerSelection}`;
+    inGame = false;
     return winner;
   }
+
+  showLine(elementsDiv[playerSelection], elementsDiv[computerSelection]);
+  
   let countElements = Object.keys(elements).length;
   let choiceDifference = playerSelection - computerSelection;
   let positiveModulo = (choiceDifference + countElements) % countElements;
@@ -100,23 +102,14 @@ function getWinner(playerSelection, computerSelection) {
   return winner;
 }
 
-function fadeLines(divStart, divEnd) {
-  document.querySelectorAll(".connector:not(:first-of-type").forEach((el) => {
-    // change every except the chosen
-    const connectorId = el.id.slice(-2);
-    if (
-      !connectorId.includes(divStart.id + divEnd.id) &&
-      !connectorId.includes(divEnd.id + divStart.id)
-    ) {
-      el.classList.add("transparent");
-    }
-  });
-
+function showLine(divStart, divEnd) {
+  const connector =
+    document.getElementById(`connector${divStart.id}${divEnd.id}`) ??
+    document.getElementById(`connector${divEnd.id}${divStart.id}`);
+  connector.classList.add("visible");
   // reset
   setTimeout(() => {
-    document
-      .querySelectorAll(".connector.transparent")
-      .forEach((el) => el.classList.remove("transparent"));
+    connector.classList.remove("visible");
     inGame = false;
   }, 2500);
 }
